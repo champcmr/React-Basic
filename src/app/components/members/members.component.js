@@ -1,23 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import configureStore from '../../store/configureStore';
-
+import {browserHistory} from 'react-router';
 import * as memberAction from '../../actions/memberAction';
 
-const store = configureStore();
 
 
 export default class Members extends React.Component {
     constructor(props) {
         super(props);
         console.log('called Member constructor', props);
-        // this.state = {
-        //     membersList: []
-        // };
     }
 
     componentDidMount() {
-        // this.loadMembers();
     }
 
     componentWillMount() {
@@ -25,10 +18,17 @@ export default class Members extends React.Component {
     }
 
     loadMembers() {
-        console.log('called loadMembers');
         let {getMembersList} = this.props;
         getMembersList();
-        // memberAction.fetchMembers();
+    }
+
+    viewTask(memberId){
+        browserHistory.push('/task-list/' + memberId);
+    }
+
+    removeMember(member){
+        console.log('Delete members',member);
+        this.props.deleteMember(member);
     }
 
     memberData = () => {
@@ -41,8 +41,10 @@ export default class Members extends React.Component {
                     <td>{member.gender}</td>
                     <td>
                         <div className="btn-group">
-                            <button type="button" className="btn btn-sm btn-primary"><span className="glyphicon glyphicon-edit"></span></button>
-                            <button type="button" className="btn btn-sm btn-danger"><span className="glyphicon glyphicon-trash"></span></button>
+                            <button type="button" onClick={() => {this.viewTask(member._id)}} className="btn btn-sm btn-primary">
+                                <span className="glyphicon glyphicon-edit"></span></button>
+                            <button type="button" onClick={()=>{this.removeMember(member)}} className="btn btn-sm btn-danger">
+                                <span className="glyphicon glyphicon-trash"></span></button>
                         </div>
                     </td>
                 </tr>
@@ -56,9 +58,6 @@ export default class Members extends React.Component {
                 <div className="row">
                     <div className="col-xs-6 text-left">
                         <h3 className="p-0 m-0 page-header">Members List</h3>
-                    </div>
-                    <div className="col-xs-6 text-right">
-                        <button className="btn btn-primary">Add Member</button>
                     </div>
                 </div>
                 <div className="row">
