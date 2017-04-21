@@ -8,16 +8,7 @@ import routes from './routes';
 import * as memberAction from './actions/memberAction';
 
 import configureStore from './store/configureStore';
-// import reducers from './reducers';
-
 const store = configureStore();
-
-// const store = configureStore(
-//   combineReducers({
-//     ...reducers,
-//     routing: routerReducer
-//   })
-// );
 
 // // Create an enhanced history that syncs navigation events with the store
 // const history = syncHistoryWithStore(browserHistory, store)

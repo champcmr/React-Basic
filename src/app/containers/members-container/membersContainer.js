@@ -11,10 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMembersList : () => {
+    getMembersList : function () {
       dispatch(memberAction.fetchMembers());
     },
-    deleteMember : (removeMember) => {
+    deleteMember : function(removeMember){
       dispatch(memberAction.deleteMember(removeMember));
     }
   }

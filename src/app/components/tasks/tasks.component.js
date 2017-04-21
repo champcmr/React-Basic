@@ -17,22 +17,31 @@ export default class Tasks extends React.Component{
     loadTasks() {        
         let {getTasksList} = this.props;
         getTasksList(this.props.params.memberId);
-        console.log('called loadTasks: ',this.props.tasksList);
+        console.log('called loadTasks: ',this.props);
     }
 
     openNewTaskPage(memberId){
         browserHistory.push('/new-task/' + memberId);
     }
 
+    removeTask(task){
+        console.log('Delete task',task);
+        this.props.deleteTask(task);
+    }
+
     taskData = () => {
        return this.props.tasksList.map((task) => {
             return (
                 <tr key={task._id} >
-                    <td>{task.title}</td>
+                    <td>
+                        <input type="checkbox" value={task.status}/>
+                    </td>
+                    <td style={{textDecoration: task.status ? 'line-through' : 'none'}}>{task.title}</td>
                     <td>{task.dueDate}</td>
                     <td>{task.status}</td>
                     <td>
-                       <button type="button" className="btn btn-sm btn-danger"><span className="glyphicon glyphicon-trash"></span></button>
+                       <button onClick={()=>{this.removeTask(task)}} type="button" className="btn btn-sm btn-danger">
+                            <span className="glyphicon glyphicon-trash"></span></button>
                     </td>
                 </tr>
             )
@@ -55,6 +64,7 @@ export default class Tasks extends React.Component{
                         <table className="table table-striped">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Title</th>
                                     <th>Due-Date</th>
                                     <th>Status</th>

@@ -4,6 +4,7 @@ const apiUrl = 'http://localhost:3000';
 
 
 export const fetchTasksSuccess = (tasks) => {
+  console.log('Task Action: ',tasks);
   return {
     type: actionTypes.FETCH_TASKS_SUCCESS,
     tasks
@@ -14,6 +15,13 @@ export const fetchTasksSuccess = (tasks) => {
 export const addTaskSuccess = (task) => {
   return{
     type : actionTypes.CREATE_TASK_SUCCESS,
+    task
+  }
+}
+
+export const deleteTaskSuccess = (task) =>{
+  return{
+    type : actionTypes.DELETE_TASKS_SUCCESS,
     task
   }
 }
@@ -61,4 +69,17 @@ export const saveTask = (formData) =>{
       });
 
    }
+}
+
+export const deleteTask = (taskObj) =>{
+  return(dispatch) => {
+      return fetch(apiUrl + '/api/delete-task/'+taskObj._id,{
+          method:'DELETE'
+      }).then((response) => response.json())
+      .then((data) => { 
+          dispatch(deleteTaskSuccess(data));
+      }).catch((error) => {
+          console.log('Error in delete task: ', error);
+      });;
+  }
 }
