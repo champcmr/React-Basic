@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import Members from '../../components/members/members.component';
-import * as memberAction from '../../actions/memberAction';
+import Members from '../components/Members';
+import { fetchMembers, deleteMember } from '../actions';
 
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     membersList: state.members
   }
@@ -12,10 +11,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMembersList : function () {
-      dispatch(memberAction.fetchMembers());
+      dispatch(fetchMembers());
     },
     deleteMember : function(removeMember){
-      dispatch(memberAction.deleteMember(removeMember));
+      dispatch(deleteMember(removeMember));
     }
   }
 };

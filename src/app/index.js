@@ -5,12 +5,10 @@ import { createStore } from 'redux';
 import { Router, browserHistory } from 'react-router';
 // import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import routes from './routes';
-import * as memberAction from './actions/memberAction';
-
 import configureStore from './store/configureStore';
 const store = configureStore();
 
-// // Create an enhanced history that syncs navigation events with the store
+// Create an enhanced history that syncs navigation events with the store
 // const history = syncHistoryWithStore(browserHistory, store)
 
 render(

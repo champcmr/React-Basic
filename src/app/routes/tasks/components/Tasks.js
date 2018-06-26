@@ -1,46 +1,34 @@
-import React from 'react';
-import {browserHistory} from 'react-router';
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
-export default class Tasks extends React.Component{
-
-    constructor(props){
-        super(props);
-    }
-
-    componentDidMount() {
-    }
-
+class Tasks extends Component {
     componentWillMount() {
-        this.loadTasks(); 
-    }
-
-    loadTasks() {        
-        let {getTasksList} = this.props;
+        const { getTasksList } = this.props;
         getTasksList(this.props.params.memberId);
-        console.log('called loadTasks: ',this.props);
     }
 
-    openNewTaskPage(memberId){
+    openNewTaskPage(memberId) {
         browserHistory.push('/new-task/' + memberId);
     }
 
-    removeTask(task){
-        console.log('Delete task',task);
-        this.props.deleteTask(task);
+    removeTask(task) {
+        const { deleteTask } = this.props;
+        deleteTask(task);
     }
 
     taskData = () => {
-       return this.props.tasksList.map((task) => {
+        const { tasksList } = this.props;
+        return tasksList.map((task) => {
             return (
                 <tr key={task._id} >
                     <td>
-                        <input type="checkbox" value={task.status}/>
+                        <input type="checkbox" value={task.status} />
                     </td>
-                    <td style={{textDecoration: task.status ? 'line-through' : 'none'}}>{task.title}</td>
+                    <td style={{ textDecoration: task.status ? 'line-through' : 'none' }}>{task.title}</td>
                     <td>{task.dueDate}</td>
                     <td>{task.status}</td>
                     <td>
-                       <button onClick={()=>{this.removeTask(task)}} type="button" className="btn btn-sm btn-danger">
+                        <button onClick={() => { this.removeTask(task) }} type="button" className="btn btn-sm btn-danger">
                             <span className="glyphicon glyphicon-trash"></span></button>
                     </td>
                 </tr>
@@ -56,11 +44,11 @@ export default class Tasks extends React.Component{
                         <h3 className="p-0 m-0 page-header">Tasks List</h3>
                     </div>
                     <div className="col-xs-6 text-right">
-                        <button type="button" onClick={() => {this.openNewTaskPage(this.props.params.memberId)}} className="btn btn-primary">Add Task</button>
+                        <button type="button" onClick={() => { this.openNewTaskPage(this.props.params.memberId) }} className="btn btn-primary">Add Task</button>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xs-12"> 
+                    <div className="col-xs-12">
                         <table className="table table-striped">
                             <thead>
                                 <tr>
@@ -81,3 +69,5 @@ export default class Tasks extends React.Component{
         );
     }
 }
+
+export default Tasks

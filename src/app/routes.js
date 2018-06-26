@@ -1,11 +1,11 @@
 import React  from 'react';
 import {Route, IndexRoute} from 'react-router'; 
 
-import App from './components/app';
-import Members from './containers/members-container/membersContainer';
-import AddMember from './containers/members-container/addMemberContainer';
-import Tasks from './containers/task-container/tasksContainer';
-import AddTask from './containers/task-container/addTaskContainer';
+import App from './routes/app';
+import Members from './routes/members/containers/Members';
+import AddMember from './routes/members/containers/MemberForm';
+import Tasks from './routes/tasks/containers/Tasks';
+import AddTask from './routes/tasks/containers/TaskForm';
 
 // tester();
 export default (

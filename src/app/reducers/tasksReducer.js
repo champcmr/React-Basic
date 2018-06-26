@@ -1,4 +1,4 @@
-import * as actionType from '../actions/actionTypes';
+import * as actionType from '../routes/tasks/constatnts';
 
 
 export const tasksReducer =  (state = [], action) => {

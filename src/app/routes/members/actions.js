@@ -1,25 +1,25 @@
-import * as actionTypes from './actionTypes';
+import { CREATE_MEMBER_SUCCESS, FETCH_MEMBERS_SUCCESS, DELETE_MEMBER_SUCCESS } from './constants';
 
 const apiUrl = 'http://localhost:3000';
 
 // Sync Action
 export const fetchMembersSuccess = (members) => {
   return {
-    type: actionTypes.FETCH_MEMBERS_SUCCESS,
+    type: FETCH_MEMBERS_SUCCESS,
     members
   }
 };
 
 export const addMemberSuccess = (member) => {
   return{
-    type : actionTypes.CREATE_MEMBER_SUCCESS,
+    type : CREATE_MEMBER_SUCCESS,
     member
   }
 }
 
 export const deleteMemberSuccess = (member) => {
   return{
-    type : actionTypes.DELETE_MEMBER_SUCCESS,
+    type : DELETE_MEMBER_SUCCESS,
     member
   }
 }

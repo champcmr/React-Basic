@@ -1,11 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
 import { Link } from 'react-router';
-
-const setActive = () => {
-    console.log('New Member');
-}
-
 
 const App = (props) => {        
     return(
@@ -26,9 +20,5 @@ const App = (props) => {
         </div>
     );
 }
-
-// export function test() {
-//     console.log('test');
-// }
 
 export default App;

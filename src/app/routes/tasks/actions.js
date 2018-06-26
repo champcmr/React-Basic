@@ -1,27 +1,23 @@
-import * as actionTypes from './actionTypes';
-
+import { FETCH_TASKS_SUCCESS, CREATE_TASK_SUCCESS, DELETE_TASKS_SUCCESS } from './constatnts';
 const apiUrl = 'http://localhost:3000';
 
-
 export const fetchTasksSuccess = (tasks) => {
-  console.log('Task Action: ',tasks);
   return {
-    type: actionTypes.FETCH_TASKS_SUCCESS,
+    type: FETCH_TASKS_SUCCESS,
     tasks
   }
 };
 
-
 export const addTaskSuccess = (task) => {
   return{
-    type : actionTypes.CREATE_TASK_SUCCESS,
+    type : CREATE_TASK_SUCCESS,
     task
   }
 }
 
 export const deleteTaskSuccess = (task) =>{
   return{
-    type : actionTypes.DELETE_TASKS_SUCCESS,
+    type : DELETE_TASKS_SUCCESS,
     task
   }
 }
