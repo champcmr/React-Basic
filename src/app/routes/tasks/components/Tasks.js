@@ -16,9 +16,8 @@ class Tasks extends Component {
         deleteTask(task);
     }
 
-    taskData = () => {
-        const { tasksList } = this.props;
-        return tasksList.map((task) => {
+    taskData = () => {        
+        return  this.props.tasksList.map((task) => {
             return (
                 <tr key={task._id} >
                     <td>

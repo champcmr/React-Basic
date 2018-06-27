@@ -1,7 +1,7 @@
 // Set up your root reducer here...
 import { combineReducers } from 'redux';
-import {membersReducer} from './membersReducer';
-import {tasksReducer} from './tasksReducer';
+import {membersReducer} from '../routes/members/reducer';
+import {tasksReducer} from '../routes/tasks/reducer';
 
 export default combineReducers({
   members: membersReducer,
